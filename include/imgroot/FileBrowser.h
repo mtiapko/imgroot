@@ -6,6 +6,8 @@ namespace ImGroot
 
 class FileBrowser
 {
+public:
+	void render() noexcept;
 };
 
 }

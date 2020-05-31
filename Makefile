@@ -3,8 +3,14 @@ LD := g++
 AR := ar
 
 CC_FLAGS := -Wall -Wextra -Wpedantic -std=c++17 -fno-rtti -fno-exceptions -MMD -MP -g
-CC_INCLUDES := -I./include -I./third-party/imgui
+CC_INCLUDES := \
+	-I./include \
+	-I./third-party/imgui \
+	-I./third-party/imgui/examples
+
 CC_DEFINES :=
+
+AR_FLAGS := rsc
 
 BIN_DIR := bin
 
@@ -34,7 +40,7 @@ IMGROOT_LIB_OBJ := $(addprefix $(IMGROOT_LIB_OBJ_DIR)/, $(addsuffix .o, $(IMGROO
 $(IMGROOT_LIB): $(IMGROOT_LIB_OBJ)
 	@echo [ LD ] $@
 	@mkdir --parent $(@D)
-	@$(AR) rsc $@ $^
+	@$(AR) $(AR_FLAGS) $@ $^
 
 $(IMGROOT_LIB_OBJ_DIR)/%.o: %
 	@echo [ CC ] $<
