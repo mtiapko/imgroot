@@ -23,7 +23,9 @@ private:
 		CLICKED
 	};
 
+	void draw_none_icon(float width, float height) const noexcept;
 	void draw_file_icon(float width, float height, uint32_t color) const noexcept;
+	void draw_dir_icon(float width, float height, uint32_t color) const noexcept;
 	ButtonState draw_wide_button(bool selected, uint32_t hovered_color, uint32_t active_color) const noexcept;
 
 private:
