@@ -63,7 +63,7 @@ EXAMPLE_OBJ := $(addprefix $(EXAMPLE_OBJ_DIR)/, $(addsuffix .o, $(EXAMPLE_SRC)))
 $(EXAMPLE): $(IMGROOT_LIB) $(EXAMPLE_OBJ)
 	@echo [ LD ] $@
 	@mkdir --parent $(@D)
-	@$(LD) $(EXAMPLE_OBJ) -L$(IMGROOT_LIB_DIR) -l$(IMGROOT_LIB_NAME) -lGLEW -lGL -lglfw -o $@
+	@$(LD) $(EXAMPLE_OBJ) -L$(IMGROOT_LIB_DIR) -l$(IMGROOT_LIB_NAME) -lGLEW -lGL -lglfw -lstdc++fs -o $@
 
 $(EXAMPLE_OBJ_DIR)/%.o: %
 	@echo [ CC ] $<
