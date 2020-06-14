@@ -16,6 +16,16 @@ private:
 	void unselect_item() noexcept;
 
 private:
+	void draw_none_icon(float width, float height) const noexcept;
+
+	void draw_home_icon(float width, float height, uint32_t color) const noexcept;
+	void draw_desktop_icon(float width, float height, uint32_t color) const noexcept;
+	void draw_recent_icon(float width, float height, uint32_t color) const noexcept;
+	void draw_trash_icon(float width, float height, uint32_t color) const noexcept;
+
+	void draw_file_icon(float width, float height, uint32_t color) const noexcept;
+	void draw_dir_icon(float width, float height, uint32_t color) const noexcept;
+
 	enum class ButtonState
 	{
 		NONE = 0,
@@ -23,12 +33,12 @@ private:
 		CLICKED
 	};
 
-	void draw_none_icon(float width, float height) const noexcept;
-	void draw_file_icon(float width, float height, uint32_t color) const noexcept;
-	void draw_dir_icon(float width, float height, uint32_t color) const noexcept;
 	ButtonState draw_wide_button(bool selected, uint32_t hovered_color, uint32_t active_color) const noexcept;
 
 private:
+	void show_item_context_menu() const noexcept;
+	void show_general_context_menu() const noexcept;
+
 	void show_nav_menu() noexcept;
 	void show_side_menu() noexcept;
 	void show_dir_browser_list() noexcept;
