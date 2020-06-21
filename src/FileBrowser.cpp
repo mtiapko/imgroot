@@ -371,9 +371,13 @@ void FileBrowser::show_dir_browser_list() noexcept
 
 				ImGui::PushID(p.path().filename().c_str());
 				if (ImGui::BeginPopupContextItem("general context menu")) {
-					this->unselect_item();
+					if (selected) {
+						this->show_item_context_menu();
+					} else {
+						this->unselect_item();
+						this->show_general_context_menu();
+					}
 
-					this->show_general_context_menu();
 					ImGui::EndPopup();
 				}
 
