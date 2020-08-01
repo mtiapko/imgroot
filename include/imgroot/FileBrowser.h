@@ -23,6 +23,7 @@ private:
 	void draw_recent_icon(float width, float height, uint32_t color) const noexcept;
 	void draw_trash_icon(float width, float height, uint32_t color) const noexcept;
 
+	void draw_image_file_icon(float width, float height, uint32_t color) const noexcept;
 	void draw_file_icon(float width, float height, uint32_t color) const noexcept;
 	void draw_dir_icon(float width, float height, uint32_t color) const noexcept;
 

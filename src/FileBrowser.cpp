@@ -177,6 +177,50 @@ void FileBrowser::draw_trash_icon(float width, float height, uint32_t color) con
 	draw_list->AddLine(p8, p9, color);
 }
 
+void FileBrowser::draw_image_file_icon(float width, float height, uint32_t color) const noexcept
+{
+	const auto item_size = ImVec2 { width, height };
+	this->draw_none_icon(width, height);
+
+	height *= 0.9f;
+	const auto icon_size = ImVec2 { item_size.x, height };
+
+	// TODO(FiTH)
+	// min *------------------+
+	//     |                  |
+	//     |                  |
+	//     |                  |
+	//     |                  |
+	//     |                  |
+	//     +------------------* max
+
+	const auto icon_min = ImGui::GetItemRectMin() + ImVec2 { 0.0f, (item_size.y - height) * 0.5f };
+	const auto icon_max = icon_min + icon_size;
+
+	const auto border_thickness = std::max(width * 0.05f, 2.0f);
+
+	const auto r1 = ImVec2 { icon_min + ImVec2 { width * 0.5f, height * 0.2f } };
+	const auto r2 = r1 + ImVec2 { width * 0.35f, height * 0.45f };
+
+	const auto c = icon_min + ImVec2 { width * 0.35f, height * 0.5f };
+	const auto radius = width * 0.25f;
+
+	const auto t1 = ImVec2 { icon_min + ImVec2 { width * 0.25f, height * 0.85f } };
+	const auto t2 = t1 + ImVec2 { width * 0.3f, height * -0.4f };
+	const auto t3 = ImVec2 { t2.x + width * 0.3f, t1.y };
+
+	const auto red_color = 0xFF4444AAu;
+	const auto green_color = 0xFF44AA44u;
+	const auto blue_color = 0xFFFF6060u;
+
+	auto draw_list = ImGui::GetWindowDrawList();
+	draw_list->AddRect(icon_min, icon_max, color, 0.0f, ImDrawCornerFlags_None, border_thickness);
+
+	draw_list->AddRectFilled(r1, r2, green_color);
+	draw_list->AddCircleFilled(c, radius, red_color);
+	draw_list->AddTriangleFilled(t1, t2, t3, blue_color);
+}
+
 void FileBrowser::draw_dir_icon(float width, float height, uint32_t color) const noexcept
 {
 	const auto item_size = ImVec2 { width, height };
